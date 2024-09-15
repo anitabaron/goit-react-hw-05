@@ -3,6 +3,16 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  box-sizing: border-box;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+ul {
+  margin: 0;
 }
 
 li {
@@ -11,6 +21,31 @@ li {
 
 .active {
   color: red;
+}
+
+.navPage {
+  display: flex;
+  gap: 30px;
+}
+
+.movieDetailsPage {
+  display: flex;
+  gap: 15px;
+}
+
+.movieImage {
+  display: flex;
+  justify-content: flex-start;
+  height: 300px;
+  width: auto;
+  object-fit: cover;
+}
+
+.movieDescr {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
 }
 
 .logo {

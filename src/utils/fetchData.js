@@ -1,5 +1,6 @@
 import axios from "axios";
-
+// https://api.themoviedb.org/3/movie/movie_id    movie details
+// const baseURL = "https://api.themoviedb.org/3/trending/movie/day";
 const baseURL = "https://api.themoviedb.org/3/discover/movie";
 const params = {
   page: 1,
@@ -10,10 +11,11 @@ const params = {
 export const fetchData = async () => {
   try {
     const response = await axios.get(baseURL, { params });
-    console.log(response.data.results);
+    // console.log(response.data.results);
     return response.data.results;
   } catch (error) {
     console.error("Błąd podczas pobierania danych:", error);
+    return [];
   }
 };
 
