@@ -13,6 +13,7 @@ h3,
 h4,
 ul {
   margin: 0;
+  padding: 0;
 }
 
 li {
@@ -26,6 +27,7 @@ li {
 .navPage {
   display: flex;
   gap: 30px;
+  padding: 20px;
 }
 
 .movieDetailsPage {
@@ -46,6 +48,15 @@ li {
   flex-wrap: wrap;
   flex-direction: column;
   text-align: left;
+}
+
+.castImage {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  width: auto;
+  object-fit: cover;
+  gap: 15px;
 }
 
 .logo {

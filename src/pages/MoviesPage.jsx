@@ -1,11 +1,12 @@
-import MovieList from "../components/MovieList";
+// import MovieList from "../components/MovieList";
 import { useMovies } from "../hooks/useMovies";
 
 export default function HomePage() {
   const list = useMovies();
+  const handlesubmit = () => {};
   return (
     <div>
-      <form>
+      <form onSubmit={handlesubmit}>
         <input></input>
         <button>Search</button>
       </form>
@@ -13,3 +14,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+//value={query}

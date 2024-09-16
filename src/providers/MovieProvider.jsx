@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchData } from "../utils/fetchData";
+import { fetchCast, fetchData, fetchReviews } from "../utils/fetchData";
 import MovieContext from "../context/MovieContext";
 
 export default function MovieProvider({ children }) {
   const [list, setList] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -11,10 +13,41 @@ export default function MovieProvider({ children }) {
         const movies = await fetchData();
         setList(movies);
       } catch (error) {
-        console.error("Błąd podczas pobierania danych:", error);
+        console.error("Błąd podczas pobierania danych Data:", error);
       }
     };
     getData();
   }, []);
-  return <MovieContext.Provider value={list}>{children}</MovieContext.Provider>;
+
+  useEffect(() => {
+    const getDataCast = async () => {
+      try {
+        const moviesCast = await fetchCast(500);
+        setCast(moviesCast);
+      } catch (error) {
+        console.error("Błąd podczas pobierania danych Cast:", error);
+      }
+    };
+    getDataCast();
+  }, []);
+  console.log(cast);
+
+  useEffect(() => {
+    const getDataReviews = async () => {
+      try {
+        const moviesReviews = await fetchReviews(500);
+        setReviews(moviesReviews);
+      } catch (error) {
+        console.error("Błąd podczas pobierania danych Reviews:", error);
+      }
+    };
+    getDataReviews();
+  }, []);
+  console.log(reviews);
+
+  return (
+    <MovieContext.Provider value={{ list, cast, reviews }}>
+      {children}
+    </MovieContext.Provider>
+  );
 }
