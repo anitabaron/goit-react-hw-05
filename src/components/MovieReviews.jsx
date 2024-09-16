@@ -1,12 +1,7 @@
-import { useParams } from "react-router-dom";
 import { useMovies } from "../hooks/useMovies";
-import { imageBaseURL } from "../constants/constants";
 
 export default function MovieReviews() {
-  const { list, reviews } = useMovies();
-  const { movieId } = useParams();
-  imageBaseURL;
-  const movie = list.find((movie) => movie.id === parseInt(movieId));
+  const { reviews } = useMovies();
 
   return (
     <div>

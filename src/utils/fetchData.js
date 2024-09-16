@@ -5,11 +5,9 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 const params = {
   page: 1,
   language: "en-US",
-  // query,
   api_key: API_KEY,
 };
 
-//query = ""
 export const fetchData = async () => {
   try {
     const response = await axios.get(`trending/movie/day`, { params });
@@ -43,4 +41,15 @@ export const fetchReviews = async (movie_id) => {
   }
 };
 
-// query: "your_search_query", // zapytanie
+export const fetchSearch = async (query = "") => {
+  try {
+    const response = await axios.get(`search/movie`, {
+      params: { ...params, query },
+    });
+    console.log("Data, for search: ", query, response.data.results);
+    return response.data.results;
+  } catch (error) {
+    console.error("Błąd podczas pobierania danych fetchSearch: ", error);
+    return [];
+  }
+};

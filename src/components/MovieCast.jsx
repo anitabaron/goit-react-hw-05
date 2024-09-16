@@ -9,12 +9,12 @@ export default function MovieCast() {
   const { movieId } = useParams();
   imageBaseURL;
   const movie = list.find((movie) => movie.id === parseInt(movieId));
-
+  const castWithPhoto = cast.filter((c) => c.profile_path !== null);
   return (
-    <div>
-      {cast.length > 0 ? (
-        cast.map((c) => (
-          <div key={c.id}>
+    <div className="castSet">
+      {castWithPhoto.length > 0 ? (
+        castWithPhoto.slice(0, 20).map((c) => (
+          <div className="castCard" key={c.id}>
             <div className="castImage">
               <img
                 src={`${imageBaseURL}${c.profile_path}`}

@@ -20,6 +20,16 @@ li {
   list-style: none;
 }
 
+input {
+  padding: 10px;
+  margin: 10px;
+}
+
+.formSearch {
+  display: flex;
+  align-items: center;
+}
+
 .active {
   color: red;
 }
@@ -30,6 +40,15 @@ li {
   padding: 20px;
 }
 
+.naviBack {
+  display: flex;
+  text-align: left;
+}
+
+.naviBack:hover {
+  color: red;
+}
+
 .movieDetailsPage {
   display: flex;
   gap: 15px;
@@ -38,7 +57,7 @@ li {
 .movieImage {
   display: flex;
   justify-content: flex-start;
-  height: 300px;
+  height: 400px;
   width: auto;
   object-fit: cover;
 }
@@ -52,11 +71,21 @@ li {
 
 .castImage {
   display: flex;
-  flex-direction: row;
   height: 200px;
   width: auto;
   object-fit: cover;
   gap: 15px;
+}
+
+.castSet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.castCard {
+  width: 150px;
+  text-align: center;
 }
 
 .logo {

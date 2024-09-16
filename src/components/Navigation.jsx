@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { setActive } from "../utils/setActiv";
 
 export default function Navigation() {
-  const setActive = ({ isActive }) => {
-    return isActive ? "active" : "";
-  };
   return (
     <nav className="navPage">
       <NavLink className={setActive} to="/">

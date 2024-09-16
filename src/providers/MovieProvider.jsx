@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
-import { fetchCast, fetchData, fetchReviews } from "../utils/fetchData";
+import {
+  fetchCast,
+  fetchData,
+  fetchReviews,
+  fetchSearch,
+} from "../utils/fetchData";
 import MovieContext from "../context/MovieContext";
 
 export default function MovieProvider({ children }) {
   const [list, setList] = useState([]);
+  const [listFiltred, setListFiltred] = useState([]);
   const [cast, setCast] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [movieId, setMovieId] = useState(null);
+  const [filterQuery, setFilterQuery] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -21,33 +28,54 @@ export default function MovieProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    const getDataCast = async () => {
-      try {
-        const moviesCast = await fetchCast(movieId);
-        setCast(moviesCast);
-      } catch (error) {
-        console.error("Błąd podczas pobierania danych Cast:", error);
-      }
-    };
-    getDataCast();
+    if (filterQuery) {
+      const getData = async () => {
+        try {
+          const moviesFiltred = await fetchSearch(filterQuery);
+          setListFiltred(moviesFiltred);
+        } catch (error) {
+          console.error("Błąd podczas pobierania danych Search:", error);
+        }
+      };
+      getData();
+    }
+  }, [filterQuery]);
+  // console.log(listFiltred);
+
+  useEffect(() => {
+    if (movieId) {
+      const getDataCast = async () => {
+        try {
+          const moviesCast = await fetchCast(movieId);
+          setCast(moviesCast);
+        } catch (error) {
+          console.error("Błąd podczas pobierania danych Cast:", error);
+        }
+      };
+      getDataCast();
+    }
   }, [movieId]);
   // console.log(cast);
 
   useEffect(() => {
-    const getDataReviews = async () => {
-      try {
-        const moviesReviews = await fetchReviews(movieId);
-        setReviews(moviesReviews);
-      } catch (error) {
-        console.error("Błąd podczas pobierania danych Reviews:", error);
-      }
-    };
-    getDataReviews();
+    if (movieId) {
+      const getDataReviews = async () => {
+        try {
+          const moviesReviews = await fetchReviews(movieId);
+          setReviews(moviesReviews);
+        } catch (error) {
+          console.error("Błąd podczas pobierania danych Reviews:", error);
+        }
+      };
+      getDataReviews();
+    }
   }, [movieId]);
   // console.log(reviews);
 
   return (
-    <MovieContext.Provider value={{ list, cast, reviews, setMovieId }}>
+    <MovieContext.Provider
+      value={{ list, listFiltred, cast, reviews, setMovieId, setFilterQuery }}
+    >
       {children}
     </MovieContext.Provider>
   );
