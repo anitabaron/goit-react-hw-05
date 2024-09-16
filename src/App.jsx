@@ -1,12 +1,11 @@
 import "./App.css";
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MoviesPage from "./pages/MoviesPage";
 import HomePage from "./pages/HomePage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
 import NotFoundPage from "./components/NotFoundPage";
 import MovieCast from "./components/MovieCast";
 import MovieReviews from "./components/MovieReviews";
-import { useMovies } from "./hooks/useMovies";
 import Navigation from "./components/Navigation";
 
 function App() {

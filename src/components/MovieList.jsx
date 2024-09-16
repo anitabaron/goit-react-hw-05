@@ -11,7 +11,7 @@ export default function MovieList() {
       <ul>
         {list.map((movie) => (
           <li key={movie.id} id={movie.id}>
-            <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
+            <NavLink to={`/movies/${movie.id}`}>{movie.title} </NavLink>
             <hr />
           </li>
         ))}

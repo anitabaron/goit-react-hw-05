@@ -6,6 +6,7 @@ export default function MovieProvider({ children }) {
   const [list, setList] = useState([]);
   const [cast, setCast] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [movieId, setMovieId] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -22,31 +23,31 @@ export default function MovieProvider({ children }) {
   useEffect(() => {
     const getDataCast = async () => {
       try {
-        const moviesCast = await fetchCast(500);
+        const moviesCast = await fetchCast(movieId);
         setCast(moviesCast);
       } catch (error) {
         console.error("Błąd podczas pobierania danych Cast:", error);
       }
     };
     getDataCast();
-  }, []);
-  console.log(cast);
+  }, [movieId]);
+  // console.log(cast);
 
   useEffect(() => {
     const getDataReviews = async () => {
       try {
-        const moviesReviews = await fetchReviews(500);
+        const moviesReviews = await fetchReviews(movieId);
         setReviews(moviesReviews);
       } catch (error) {
         console.error("Błąd podczas pobierania danych Reviews:", error);
       }
     };
     getDataReviews();
-  }, []);
-  console.log(reviews);
+  }, [movieId]);
+  // console.log(reviews);
 
   return (
-    <MovieContext.Provider value={{ list, cast, reviews }}>
+    <MovieContext.Provider value={{ list, cast, reviews, setMovieId }}>
       {children}
     </MovieContext.Provider>
   );

@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useMovies } from "../hooks/useMovies";
 import { useParams } from "react-router-dom";
 import { genreMap, imageBaseURL } from "../constants/constants";
 
 export default function MovieDetailsPage() {
-  const { list } = useMovies();
+  const { list, setMovieId } = useMovies();
   const { movieId } = useParams();
-  imageBaseURL;
-  genreMap;
-  const movie = list.find((movie) => movie.id === parseInt(movieId));
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    setMovieId(movieId);
+  }, [movieId, setMovieId]);
+
+  useEffect(() => {
+    if (list.length > 0 && movieId) {
+      const foundMovie = list.find((movie) => movie.id === parseInt(movieId));
+      setMovie(foundMovie);
+    }
+  }, [list, movieId]);
+
   if (!movie) {
-    return <div>Movie not found</div>;
+    return <h4>Sorry. Movie not found !</h4>;
+  }
+
+  if (!movieId) {
+    return <h4>Sorry. Movie no movie ID found !</h4>;
   }
 
   return (
