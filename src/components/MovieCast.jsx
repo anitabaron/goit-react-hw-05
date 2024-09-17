@@ -1,4 +1,3 @@
-import React from "react";
 import { useMovies } from "../hooks/useMovies";
 import { useParams } from "react-router-dom";
 import { imageBaseURL } from "../constants/constants";

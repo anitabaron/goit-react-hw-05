@@ -1,3 +1,1 @@
-export const setActive = ({ isActive }) => {
-  return isActive ? "active" : "";
-};
+export const setActive = ({ isActive }) => (isActive ? "active" : "");

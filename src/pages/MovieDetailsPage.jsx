@@ -19,17 +19,32 @@ export default function MovieDetailsPage() {
 
   useEffect(() => {
     if (movieId) {
-      const foundMovie = list.find((movie) => movie.id === parseInt(movieId));
-      setMovie(foundMovie);
+      if (listFiltred.length !== 0) {
+        const foundMovieFiltred = listFiltred.find(
+          (movie) => movie.id === parseInt(movieId)
+        );
+        setMovie(foundMovieFiltred);
+      } else {
+        const foundMovie = list.find((movie) => movie.id === parseInt(movieId));
+        setMovie(foundMovie);
+      }
     }
   }, [list, listFiltred, movieId]);
+
+  console.log("z MDP list:", list);
+  console.log("z MDP listFiltred:", listFiltred);
+  console.log("z MDP movieId:", movieId);
 
   if (!movie) {
     return <h4>Sorry. Movie not found !</h4>;
   }
 
   if (!movieId) {
-    return <h4>Sorry. Movie no movie ID found !</h4>;
+    return <h4>Sorry. Movie no movie found !</h4>;
+  }
+
+  if (listFiltred.length === 0) {
+    return <h4>Sorry. No movies found to your query!</h4>;
   }
 
   return (

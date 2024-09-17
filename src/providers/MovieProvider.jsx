@@ -38,6 +38,8 @@ export default function MovieProvider({ children }) {
         }
       };
       getData();
+    } else {
+      setListFiltred([]);
     }
   }, [filterQuery]);
   // console.log(listFiltred);
