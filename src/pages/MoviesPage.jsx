@@ -20,8 +20,8 @@ export default function MoviesPage() {
     console.log(query);
     // window.location.hash = `query=${encodeURIComponent(query)}`;
     setQuery("");
-    const form = e.target;
-    form.reset();
+    // const form = e.target;
+    // form.reset();
   };
   console.log("z MP Current location:", location);
   console.log("z MP List filtred ", listFiltred);
