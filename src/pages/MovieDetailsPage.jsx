@@ -4,6 +4,7 @@ import { useMovies } from "../hooks/useMovies";
 import { useParams } from "react-router-dom";
 import { genreMap, imageBaseURL } from "../constants/constants";
 import { setActive } from "../utils/setActiv";
+import NavigationBack from "../components/NavigationBack";
 
 export default function MovieDetailsPage() {
   const { list, listFiltred, setMovieId } = useMovies();
@@ -47,9 +48,7 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <NavLink to="/" className="naviBack">
-        Go back
-      </NavLink>
+      <NavigationBack />
       <div className="movieDetailsPage">
         <div className="movieImage">
           <img src={`${imageBaseURL}${movie.poster_path}`} alt={movie.title} />
@@ -57,23 +56,34 @@ export default function MovieDetailsPage() {
         <div className="movieDescr">
           <h2>{movie.title}</h2>
           <br />
-          <p>Release Date: {movie.release_date}</p>
-          <p>Average Vote: {movie.vote_average}</p>
-          Genres: {movie.genre_ids.map((id) => genreMap[id]).join(", ")}
+          <p>
+            <span className="strong">Release Date: </span>
+            {movie.release_date}
+          </p>
+          <p>
+            <span className="strong">Average Vote: </span> {movie.vote_average}
+          </p>
+          <p>
+            <span className="strong">Genres: </span>
+            {movie.genre_ids.map((id) => genreMap[id]).join(", ")}
+          </p>
           <br />
+          <p>
+            <span className="strong">Overview: </span>
+            {movie.overview}
+          </p>
           <br />
-          <p>Overview: {movie.overview}</p>
-          <br />
-          <p>Additional information:</p>
-          <h3>
-            <NavLink className={setActive} to="cast">
+          <p>
+            <span className="strong">Additional information:</span>
+          </p>
+          <div className="addDescr">
+            <NavLink className={`{setActive} btn`} to="cast">
               Cast
-            </NavLink>{" "}
-            |{" "}
-            <NavLink className={setActive} to="reviews">
+            </NavLink>
+            <NavLink className={`{setActive} btn`} to="reviews">
               Reviews
             </NavLink>
-          </h3>
+          </div>
           <br />
           <Outlet />
         </div>

@@ -3,6 +3,8 @@ import { useMovies } from "../hooks/useMovies";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import { setActive } from "../utils/setActiv";
 import { imageBaseURL } from "../constants/constants";
+import { ComboboxInput, Input } from "@headlessui/react";
+import NavigationBack from "../components/NavigationBack";
 
 export default function MoviesPage() {
   const [query, setQuery] = useState("");
@@ -23,28 +25,28 @@ export default function MoviesPage() {
     // const form = e.target;
     // form.reset();
   };
-  console.log("z MP Current location:", location);
+  // console.log("z MP Current location:", location);
   console.log("z MP List filtred ", listFiltred);
   console.log("z MP Sorted movies ", sortedMovies);
-  console.log("z MP list:", list);
+  // console.log("z MP list:", list);
 
   // if (listFiltred.length === 0) {
   //   return <h4>Sorry. No movies found to your query!</h4>;
   // }
   return (
     <>
-      <NavLink to="/" className="naviBack">
-        Go back
-      </NavLink>
+      <NavigationBack />
       <div className="formSearch">
         <form onSubmit={handlesubmit}>
-          <input
+          <Input
             type="text"
             name="query"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-          ></input>
-          <button type="submit">Search</button>
+          ></Input>
+          <button type="submit" className="btn">
+            Search
+          </button>
         </form>
       </div>
       <div>

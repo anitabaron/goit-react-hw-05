@@ -3,11 +3,11 @@ import { setActive } from "../utils/setActiv";
 
 export default function Navigation() {
   return (
-    <nav className="navPage">
-      <NavLink className={setActive} to="/">
+    <nav className="navPage header">
+      <NavLink className={`{setActive} btn`} to="/">
         Home
       </NavLink>
-      <NavLink className={setActive} to="/movies">
+      <NavLink className={`{setActive} btn`} to="/movies">
         Movies
       </NavLink>
     </nav>
