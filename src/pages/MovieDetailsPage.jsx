@@ -4,7 +4,6 @@ import { useMovies } from "../hooks/useMovies";
 import { useParams } from "react-router-dom";
 import { genreMap, imageBaseURL } from "../constants/constants";
 import { setActive } from "../utils/setActiv";
-import NavigationBack from "../components/NavigationBack";
 
 export default function MovieDetailsPage() {
   const { list, listFiltred, setMovieId } = useMovies();
@@ -44,7 +43,6 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <NavigationBack />
       <div className="movieDetailsPage">
         <div className="movieImage">
           <img src={`${imageBaseURL}${movie.poster_path}`} alt={movie.title} />

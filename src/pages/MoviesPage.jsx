@@ -3,7 +3,6 @@ import { useMovies } from "../hooks/useMovies";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { setActive } from "../utils/setActiv";
 import { imageBaseURL } from "../constants/constants";
-import NavigationBack from "../components/NavigationBack";
 import Loading from "../components/Loading";
 
 export default function MoviesPage() {
@@ -81,7 +80,7 @@ export default function MoviesPage() {
       </div>
       <div>
         {loading ? (
-          <Loading /> // Wyświetlamy "Loading..." w trakcie pobierania danych
+          <Loading />
         ) : searchMade && sortedMovies.length === 0 ? (
           <h4>Sorry. No movies found to your query!</h4>
         ) : (
