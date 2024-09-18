@@ -20,9 +20,9 @@ export default function MoviesPage() {
 
   const handlesubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     setFilterQuery(query);
     console.log(query);
-    setLoading(true);
     setSearchMade(true);
     navigate(`/movies?query=${encodeURIComponent(query)}`, {
       state: { from: location },
@@ -40,18 +40,6 @@ export default function MoviesPage() {
     setFilterQuery("");
     navigate("/movies");
   };
-
-  useEffect(() => {
-    if (location.state?.from) {
-      return;
-    }
-    if (location.pathname === "/movies") {
-      setQuery("");
-      setSearchMade(false);
-      setListFiltred([]);
-      setFilterQuery("");
-    }
-  }, [location.pathname, location.state, setListFiltred, setFilterQuery]);
 
   useEffect(() => {
     if (listFiltred.length > 0 || searchMade) {

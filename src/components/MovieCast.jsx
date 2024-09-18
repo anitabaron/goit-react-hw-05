@@ -1,11 +1,9 @@
 import { useMovies } from "../hooks/useMovies";
-import { useParams } from "react-router-dom";
 import { imageBaseURL } from "../constants/constants";
 
 export default function MovieCast() {
   const { cast } = useMovies();
-  const { list } = useMovies();
-  const { movieId } = useParams();
+
   imageBaseURL;
   const castWithPhoto = cast.filter((c) => c.profile_path !== null);
   return (

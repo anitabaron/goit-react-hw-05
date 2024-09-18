@@ -4,8 +4,6 @@ import { API_KEY } from "../constants/constants";
 axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 const params = {
   page: 1,
-  // original_language: "en",
-  // original_language: "en - US",
   api_key: API_KEY,
 };
 
@@ -58,7 +56,6 @@ export const fetchSearch = async (query = "") => {
 
     console.log("Movies in English: ", englishMovies);
     return englishMovies;
-    // return response.data.results;
   } catch (error) {
     console.error("Błąd podczas pobierania danych fetchSearch: ", error);
     return [];
