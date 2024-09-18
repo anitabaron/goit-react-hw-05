@@ -7,7 +7,6 @@ export default function MovieCast() {
   const { list } = useMovies();
   const { movieId } = useParams();
   imageBaseURL;
-  const movie = list.find((movie) => movie.id === parseInt(movieId));
   const castWithPhoto = cast.filter((c) => c.profile_path !== null);
   return (
     <div className="castSet">

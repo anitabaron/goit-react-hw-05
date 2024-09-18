@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { setActive } from "../utils/setActiv";
+import NavigationBack from "./NavigationBack";
 
 export default function Navigation() {
   return (
@@ -10,6 +11,7 @@ export default function Navigation() {
       <NavLink className={`{setActive} btn`} to="/movies">
         Movies
       </NavLink>
+      <NavigationBack />
     </nav>
   );
 }

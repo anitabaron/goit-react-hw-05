@@ -30,9 +30,9 @@ export default function MovieDetailsPage() {
     }
   }, [list, listFiltred, movieId]);
 
-  console.log("z MDP list:", list);
+  // console.log("z MDP list:", list);
   console.log("z MDP listFiltred:", listFiltred);
-  console.log("z MDP movieId:", movieId);
+  // console.log("z MDP movieId:", movieId);
 
   if (!movie) {
     return <h4>Sorry. Movie not found 111!</h4>;
@@ -41,10 +41,6 @@ export default function MovieDetailsPage() {
   if (!movieId) {
     return <h4>Sorry. Movie no movie found 222!</h4>;
   }
-
-  // if (listFiltred.length === 0) {
-  //   return <h4>Sorry. No movies found to your query!</h4>;
-  // }
 
   return (
     <>

@@ -76,7 +76,15 @@ export default function MovieProvider({ children }) {
 
   return (
     <MovieContext.Provider
-      value={{ list, listFiltred, cast, reviews, setMovieId, setFilterQuery }}
+      value={{
+        list,
+        listFiltred,
+        cast,
+        reviews,
+        setMovieId,
+        setFilterQuery,
+        setListFiltred,
+      }}
     >
       {children}
     </MovieContext.Provider>

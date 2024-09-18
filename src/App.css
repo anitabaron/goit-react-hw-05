@@ -47,6 +47,7 @@ input {
   border-radius: 8px;
   color: white;
   transition: color 0.25s;
+  margin-right: 10px;
 }
 
 .btn:hover {
@@ -62,16 +63,14 @@ input {
 }
 
 .navPage {
-  display: flex;
-  gap: 20px;
+display: flex;
   padding: 15px;
+  align-items: center; /
 }
 
 .naviBack {
-  position: fixed;
-  top: 0;
+  margin-left: auto;
   text-align: right;
-  margin: 15px;
 }
 
 .movieDetailsPage {

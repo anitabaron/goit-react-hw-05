@@ -1,10 +1,9 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useMovies } from "../hooks/useMovies";
 import { imageBaseURL } from "../constants/constants";
 
 export default function MovieList() {
-  const { list, listFiltred } = useMovies();
-  const { state, pathname, search } = useLocation();
+  const { list } = useMovies();
 
   return (
     <div>
